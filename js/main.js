@@ -1,5 +1,5 @@
 /* ============================================================
-   Lehi Utah Tree Service — Main JavaScript
+   Lehi Tree Pros — Main JavaScript
    ============================================================ */
 
 (function () {
