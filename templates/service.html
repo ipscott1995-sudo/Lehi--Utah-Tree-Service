@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{{CURRENT_SERVICE_TITLE}}</title>
+  <meta name="description" content="{{CURRENT_SERVICE_META_DESCRIPTION}}">
+  <link rel="canonical" href="https://{{DOMAIN}}/{{CURRENT_SERVICE_URL}}">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <div class="emergency-banner" role="alert">
+    🚨 {{EMERGENCY_BANNER_TEXT}} — <a href="tel:{{PHONE_TEL}}">Call {{PHONE_DISPLAY}}</a>
+  </div>
+
+  <header class="site-header">
+    <nav class="nav-wrap" aria-label="Main navigation">
+      <a href="index.html" class="logo" aria-label="{{BUSINESS_NAME}} Home">
+        <div class="logo-text">
+          <span class="logo-name">{{BUSINESS_NAME}}</span>
+          <span class="logo-sub">{{CITY}}, {{STATE_FULL}}</span>
+        </div>
+      </a>
+
+      <div class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="{{SERVICE_1_URL}}">{{SERVICE_1_NAME}}</a>
+        <a href="{{SERVICE_2_URL}}">{{SERVICE_2_NAME}}</a>
+        <a href="{{SERVICE_3_URL}}">{{SERVICE_3_NAME}}</a>
+        <a href="{{SERVICE_4_URL}}">{{SERVICE_4_NAME}}</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="{{FORM_URL}}" class="btn nav-cta" target="_blank" rel="noopener">{{PRIMARY_CTA}}</a>
+      </div>
+
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation">
+      <a href="index.html">Home</a>
+      <a href="{{SERVICE_1_URL}}">{{SERVICE_1_NAME}}</a>
+      <a href="{{SERVICE_2_URL}}">{{SERVICE_2_NAME}}</a>
+      <a href="{{SERVICE_3_URL}}">{{SERVICE_3_NAME}}</a>
+      <a href="{{SERVICE_4_URL}}">{{SERVICE_4_NAME}}</a>
+      <a href="about.html">About</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="{{FORM_URL}}" class="btn btn-primary" target="_blank" rel="noopener">{{PRIMARY_CTA}}</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero service-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a><span>›</span><span>{{CURRENT_SERVICE_NAME}}</span>
+        </nav>
+
+        <h1>{{CURRENT_SERVICE_NAME}} in {{CITY}}, {{STATE_FULL}}</h1>
+
+        <a href="tel:{{PHONE_TEL}}" class="hero-phone-link">{{PHONE_DISPLAY}}</a>
+        <p class="hero-phone-note">Tap to call · Free estimates available</p>
+
+        <p class="hero-intro">{{CURRENT_SERVICE_HERO_DESCRIPTION}}</p>
+
+        <div class="hero-btns" style="justify-content:center;">
+          <a href="{{FORM_URL}}" class="btn btn-primary" target="_blank" rel="noopener">{{PRIMARY_CTA}}</a>
+          <a href="tel:{{PHONE_TEL}}" class="btn btn-outline">{{PHONE_CTA}}</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-bar" aria-label="Why choose us">
+      <div class="container trust-bar-grid">
+        <div>✓ Free Estimates</div>
+        <div>✓ Fast Response</div>
+        <div>✓ Honest Pricing</div>
+        <div>✓ Locally Owned</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container page-layout">
+        <article>
+          <h2>{{CURRENT_SERVICE_HEADLINE}}</h2>
+          <p>{{CURRENT_SERVICE_PARAGRAPH_1}}</p>
+          <p>{{CURRENT_SERVICE_PARAGRAPH_2}}</p>
+
+          <section style="margin-top:40px;">
+            <h2>Why Choose {{BUSINESS_NAME}}?</h2>
+            <div class="cards-grid">
+              <article class="card">
+                <h3>Locally Owned</h3>
+                <p>Local service from people who understand nearby homes, neighborhoods, and property needs.</p>
+              </article>
+              <article class="card">
+                <h3>Fast Response</h3>
+                <p>Call or request a quote online and get a clear response without chasing callbacks.</p>
+              </article>
+              <article class="card">
+                <h3>Honest Pricing</h3>
+                <p>Get straightforward estimates before work begins, with the scope explained clearly.</p>
+              </article>
+              <article class="card">
+                <h3>Professional Service</h3>
+                <p>Careful work, respectful communication, and clean job sites from start to finish.</p>
+              </article>
+            </div>
+          </section>
+
+          <section style="margin-top:40px;">
+            <h2>Common Projects We Help With</h2>
+            <ul class="checklist">
+              {{CURRENT_SERVICE_BULLETS_HTML}}
+            </ul>
+          </section>
+
+          <section style="margin-top:40px;">
+            <h2>How It Works</h2>
+            <div class="process-grid">
+
+    <div class="process-card">
+        <span>1</span>
+        <h3>Call or Request Online</h3>
+        <p>Use the phone number on this page or send your details through the quote form.</p>
+    </div>
+
+    <div class="process-card">
+        <span>2</span>
+        <h3>Get an Estimate</h3>
+        <p>We review the job, answer questions, and provide a clear estimate before scheduling.</p>
+    </div>
+
+    <div class="process-card">
+        <span>3</span>
+        <h3>Schedule the Work</h3>
+        <p>Choose a time that works for you, with urgent options when available.</p>
+    </div>
+
+    <div class="process-card">
+        <span>4</span>
+        <h3>Work Completed</h3>
+        <p>The job is completed carefully, and the work area is cleaned before we wrap up.</p>
+    </div>
+
+</div>
+
+          <section style="margin-top:40px;">
+            <h2>Related Services</h2>
+            <div class="cards-grid related-services">
+              <article class="card">
+                <h3>{{SERVICE_1_NAME}}</h3>
+                <p>{{SERVICE_1_DESCRIPTION}}</p>
+                <a href="{{SERVICE_1_URL}}" class="card-link">Learn more →</a>
+              </article>
+              <article class="card">
+                <h3>{{SERVICE_2_NAME}}</h3>
+                <p>{{SERVICE_2_DESCRIPTION}}</p>
+                <a href="{{SERVICE_2_URL}}" class="card-link">Learn more →</a>
+              </article>
+              <article class="card">
+                <h3>{{SERVICE_3_NAME}}</h3>
+                <p>{{SERVICE_3_DESCRIPTION}}</p>
+                <a href="{{SERVICE_3_URL}}" class="card-link">Learn more →</a>
+              </article>
+              <article class="card">
+                <h3>{{SERVICE_4_NAME}}</h3>
+                <p>{{SERVICE_4_DESCRIPTION}}</p>
+                <a href="{{SERVICE_4_URL}}" class="card-link">Learn more →</a>
+              </article>
+            </div>
+          </section>
+
+          <section style="margin-top:40px;">
+            {{CURRENT_SERVICE_FAQ_HTML}}
+          </section>
+
+          <section style="margin-top:40px;">
+            <h2>Service Area</h2>
+            <p>{{SERVICE_AREA_INTRO}}</p>
+            <div class="area-tags" role="list">
+              {{AREA_TAGS_HTML}}
+            </div>
+          </section>
+        </article>
+
+        <aside class="sidebar">
+          <div class="sidebar-box sidebar-cta">
+            <h3>Need {{CURRENT_SERVICE_NAME}}?</h3>
+            <a href="tel:{{PHONE_TEL}}" class="phone-giant">{{PHONE_DISPLAY}}</a>
+            <p>Call now or request a free estimate online.</p>
+            <a href="{{FORM_URL}}" class="btn btn-primary" target="_blank" rel="noopener" style="width:100%; text-align:center;">{{PRIMARY_CTA}}</a>
+          </div>
+
+          <div class="sidebar-box">
+            <h3>Services</h3>
+            <ul>
+              {{SERVICE_LINKS_HTML}}
+            </ul>
+          </div>
+
+          <div class="sidebar-box">
+            <h3>Good To Know</h3>
+            <ul>
+              <li>Free estimates available</li>
+              <li>Fast local response</li>
+              <li>Clear pricing before work begins</li>
+              <li>Serving the local area</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="cta-banner">
+      <div class="container">
+        <h2>Need {{CURRENT_SERVICE_NAME}}?</h2>
+        <p>Call now or request a free estimate online. We’ll get back to you quickly.</p>
+
+        <div class="hero-phone hero-phone-cta">
+          <a href="tel:{{PHONE_TEL}}">{{PHONE_DISPLAY}}</a>
+        </div>
+
+        <div class="hero-btns" style="justify-content:center; gap:14px; flex-wrap:wrap;">
+          <a href="{{FORM_URL}}" class="btn btn-outline" target="_blank" rel="noopener">{{PRIMARY_CTA}}</a>
+          <a href="tel:{{PHONE_TEL}}" class="btn" style="background:#fff;color:var(--amber-dark);font-weight:700;">{{PHONE_CTA}}</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-text">
+              <span class="logo-name">{{BUSINESS_NAME}}</span>
+              <span class="logo-sub">{{CITY}}, {{STATE_FULL}}</span>
+            </div>
+          </a>
+          <p>{{FOOTER_DESCRIPTION}}</p>
+          <p style="margin-top:10px;"><strong style="color:#fff;">📞 <a href="tel:{{PHONE_TEL}}">{{PHONE_DISPLAY}}</a></strong></p>
+          <p>{{FOOTER_SERVICE_AREA}}</p>
+        </div>
+
+        <nav class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            {{SERVICE_LINKS_HTML}}
+          </ul>
+        </nav>
+
+        <nav class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="{{FORM_URL}}" target="_blank" rel="noopener">Free Estimate</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-col">
+          <h4>Service Area</h4>
+          <ul>
+            {{AREA_TAGS_HTML}}
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 {{BUSINESS_NAME}}. All rights reserved.</span>
+        <span>{{FOOTER_TAGLINE}}</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="mobile-sticky-cta">
+    <a href="tel:{{PHONE_TEL}}">Call Now</a>
+    <a href="{{FORM_URL}}" target="_blank" rel="noopener">Free Estimate</a>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

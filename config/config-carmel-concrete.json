@@ -1,0 +1,75 @@
+{
+  "business": {
+    "name": "Carmel Concrete Paving",
+    "niche": "Concrete Paving",
+    "primaryService": "Concrete Paving",
+    "schemaType": "LocalBusiness",
+    "domain": "carmelconcretepaving.com",
+    "phoneDisplay": "(317) 555-0198",
+    "phoneTel": "+13175550198",
+    "email": "contact@carmelconcretepaving.com",
+    "formUrl": "https://tally.so/r/J9GPYr"
+  },
+  "location": {
+    "city": "Carmel",
+    "state": "Indiana",
+    "stateAbbr": "IN",
+    "region": "Hamilton County"
+  },
+  "services": [
+    {
+      "name": "Concrete Driveways",
+      "slug": "concrete-driveways",
+      "url": "concrete-driveways.html",
+      "description": "Concrete driveway installation, replacement, and repair for residential properties."
+    },
+    {
+      "name": "Concrete Patios",
+      "slug": "concrete-patios",
+      "url": "concrete-patios.html",
+      "description": "Durable concrete patios for backyards, outdoor seating areas, and walkways."
+    },
+    {
+      "name": "Concrete Sidewalks",
+      "slug": "concrete-sidewalks",
+      "url": "concrete-sidewalks.html",
+      "description": "Sidewalk installation and replacement for homes and private properties."
+    },
+    {
+      "name": "Concrete Repair",
+      "slug": "concrete-repair",
+      "url": "concrete-repair.html",
+      "description": "Repair for cracked, uneven, or damaged concrete surfaces."
+    }
+  ],
+  "locationPages": [
+    {
+      "city": "Fishers",
+      "slug": "fishers",
+      "url": "concrete-paving-fishers.html"
+    },
+    {
+      "city": "Westfield",
+      "slug": "westfield",
+      "url": "concrete-paving-westfield.html"
+    },
+    {
+      "city": "Noblesville",
+      "slug": "noblesville",
+      "url": "concrete-paving-noblesville.html"
+    },
+    {
+      "city": "Zionsville",
+      "slug": "zionsville",
+      "url": "concrete-paving-zionsville.html"
+    }
+  ],
+  "images": {
+    "useImages": false,
+    "hero": "",
+    "service1": "",
+    "service2": "",
+    "service3": "",
+    "service4": ""
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "business": {
+    "name": "Lehi Tree Pros",
+    "niche": "Tree Service",
+    "primaryService": "Professional Tree Service",
+    "schemaType": "TreeCareService",
+    "domain": "lehitreepros.com",
+    "phoneDisplay": "(385) 217-5381",
+    "phoneTel": "+13852175381",
+    "email": "contact@lehitreepros.com",
+    "formUrl": "https://api.leadconnectorhq.com/widget/form/eeYobFkzVx8OwxuT8GmM"
+  },
+"location": {
+  "city": "Lehi",
+  "state": "Utah",
+  "stateAbbr": "UT",
+  "region": "Utah County"
+},
+  "services": [
+    {
+      "name": "Tree Removal",
+      "slug": "tree-removal",
+      "url": "tree-removal.html",
+      "description": "Safe removal of dead, damaged, hazardous, or unwanted trees."
+    },
+    {
+      "name": "Tree Trimming",
+      "slug": "tree-trimming",
+      "url": "tree-trimming.html",
+      "description": "Pruning and trimming to improve tree health, safety, and appearance."
+    },
+    {
+      "name": "Stump Grinding",
+      "slug": "stump-grinding",
+      "url": "stump-grinding.html",
+      "description": "Stump grinding below surface level so you can reclaim your yard."
+    },
+    {
+      "name": "Emergency Tree Service",
+      "slug": "emergency-tree-service",
+      "url": "emergency-tree-service.html",
+      "description": "Urgent help for storm damage, fallen trees, and hazardous limbs."
+    }
+  ],
+  "locationPages": [
+    {
+      "city": "American Fork",
+      "slug": "american-fork",
+      "url": "tree-service-american-fork.html"
+    },
+    {
+      "city": "Eagle Mountain",
+      "slug": "eagle-mountain",
+      "url": "tree-service-eagle-mountain.html"
+    },
+    {
+      "city": "Lindon",
+      "slug": "lindon",
+      "url": "tree-service-lindon.html"
+    },
+    {
+      "city": "Saratoga Springs",
+      "slug": "saratoga-springs",
+      "url": "tree-service-saratoga-springs.html"
+    }
+  ],
+  "images": {
+    "useImages": false,
+    "hero": "",
+    "service1": "",
+    "service2": "",
+    "service3": "",
+    "service4": ""
+  }
+}
