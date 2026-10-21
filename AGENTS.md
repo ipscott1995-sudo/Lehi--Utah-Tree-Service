@@ -24,7 +24,7 @@ Local root at inspection: `/Users/ianscott/Desktop/Lack Pard Rank + Rent/Local S
 | Path | Purpose |
 | --- | --- |
 | `scripts/generate_site.py` | Active Python static generator; standard library only |
-| `scripts/publish_site.py` | Copies generated output into this repository’s root; not a remote deployer |
+| `scripts/publish_site.py` | Validates and stages public output into an explicit separate directory; refuses authoring-root publishing |
 | `scripts/generate_site-backup.py` | Older generator snapshot; do not treat as active CLI documentation |
 | `config/config-<slug>.json` | Site facts, services, locations, optional image manifest and homepage reviews |
 | `config/content-<slug>.json` | Page copy, service/location FAQs, metadata |
@@ -43,7 +43,7 @@ Local root at inspection: `/Users/ianscott/Desktop/Lack Pard Rank + Rent/Local S
 
 The active generator accepts a site slug, not an arbitrary config path. It loads matching config/content files, constructs placeholder variables, and performs string replacement for up to three passes. It does not use a template engine, escape all inserted HTML/JSON values, or validate unresolved placeholders. Treat content as trusted authoring input and validate rendered output, especially quotes and special characters in structured data.
 
-It deletes the entire shared `output/` directory, creates it again, copies `css/`, `js/`, and `images/`, then renders:
+It deletes the entire shared `output/` directory, creates it again, copies only allowlisted shared assets, configured public assets and manifest derivatives, then renders:
 
 - `home.html` → `index.html`, plus about, contact, and FAQ;
 - `service.html` once per configured service;
@@ -98,7 +98,8 @@ Bend is a separate legacy migration, not a config in this generator. Handoff-onl
 5. For image work, additionally check source licenses, alt text, dimensions, responsive behavior, file sizes, missing images, hero loading priority, and below-fold lazy loading. Use appropriate smoke/regression tests; no automated test suite or package/build tooling was found at inspection.
 6. Publish only the reviewed output into the correct site checkout, inspect diffs there, stage intentional files, and commit when authorized. Fix problems at source, regenerate, and review again; do not maintain patches only in output.
 
-`python3 scripts/publish_site.py` only copies `output/` to **this workspace root**. It replaces matching files and whole asset directories but does not remove obsolete HTML, select a site, verify domain, commit, push, or deploy. Because this workspace points to Lehi, do not use it to publish another site. It can also overwrite asset source folders; review provenance and backups before use. There is no implemented site-isolated build/deploy pipeline yet.
+`scripts/publish_site.py` now requires an explicit slug and `--destination` pointing to a separate public-only staging directory. It runs production validation and refuses the authoring root, overlapping output paths, unsafe/symlinked destinations and existing unknown/private files. It does not commit, push or deploy. The former implicit copy-to-repository-root behavior is intentionally disabled to prevent source exposure. Prefer Cloudflare Pages generation with public directory `output`. See `docs/deployment-security.md` for the current CLI and policy.
+
 
 ## GitHub and Cloudflare deployment
 
@@ -211,3 +212,12 @@ Current correction report: `docs/lehi-media-review/generator-corrections.md`. Ea
 The release includes 33 optimized derivatives: **30 WebP plus 3 JPEG social images**, not 33 WebP. Image manifest/license records are tracked; six large originals stay local and are excluded from this release. To reoptimize in a fresh checkout, restore originals from local storage or their recorded licensed source URLs and verify manifest SHA256 hashes. Normal builds require no originals, Pillow or external services. Optional Pillow and browser test requirements are separate files. Other-site untracked files are deliberately not part of this Lehi release.
 
 See `docs/lehi-release.md` for the scoped file list, clean-checkout verification and outstanding production risks. Historical notes above describe earlier snapshots and are superseded by this release note where they differ.
+
+
+## Reusable deployment security (local implementation, October 21, 2026)
+
+Read `docs/deployment-security.md` before release preparation. `scripts/deployment_security.py` supplies the single shared public-file policy; generation copies only expected assets and rejects unsafe artifacts before success. The existing production validator adds the same inventory/credential gate while retaining page, metadata, contact, media and sitemap checks. Additional intended assets belong in `deployment.publicAssets` and cannot override private-path/type restrictions. Never add internal files to the public allowlist.
+
+`python3 scripts/validate_production.py <slug>` is offline; `--live` opts into read-only HTTPS GETs of configured hostnames, representative private paths and all public assets. `deployment.liveHosts` selects the site's apex/www pair; `--include-www` is an explicit alternative. Lehi declares both hosts. Private probes include exact and unique-query variants and inspect body/content type, not HTTP status alone. WAF blocks, genuine not-found responses and verified homepage fallbacks can each pass; site protection need not be identical. Unknown/network/redirect/truncation responses fail closed. Never include response bodies, credentials or sensitive exception strings in reports.
+
+Local tests use synthetic HTTP fixtures and temporary files; do not contact other sites merely to run tests. Production approvals are still required for every push, deployment or infrastructure change. No Cloudflare rules/settings are managed by the validator. `--live` never repairs, purges, submits a form or places a call. Reports must stay outside output. Local commits may record these approved changes; pushing or deploying them still requires explicit owner approval. Historical root-publisher instructions above are superseded by the secure staging contract.

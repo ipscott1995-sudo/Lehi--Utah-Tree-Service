@@ -71,7 +71,7 @@ class MediaTests(unittest.TestCase):
         images = SiteImages(ROOT, disabled)
         self.assertEqual(images.figure('index.html', 'hero'), '')
         with tempfile.TemporaryDirectory() as folder, patch.object(generate_site, 'OUTPUT_DIR', Path(folder)):
-            generate_site.copy_assets(images)
+            generate_site.copy_assets(images, disabled)
             self.assertFalse((Path(folder) / 'images/optimized').exists())
             self.assertTrue((Path(folder) / 'css/styles.css').exists())
 

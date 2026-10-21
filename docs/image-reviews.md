@@ -1,6 +1,6 @@
 # Reusable images and homepage reviews
 
-The Lehi release is local only. Do not push, publish, deploy, change GHL or change Cloudflare without explicit owner approval. Other sites and Bend are excluded from this release.
+The image/reviews system was introduced with the Lehi release. The latest deployment-security updates remain local. Do not push, publish, deploy, change GHL or change Cloudflare without explicit owner approval. Other sites and Bend remain outside the current rollout.
 
 ## Generate and inspect
 
@@ -20,7 +20,7 @@ Enable `images.useImages` and set `images.manifest` to the site manifest. Versio
 
 Each image records its licensed `source` (URL, download URL, creator, license, license URL, terms, verification date), internal illustrative caption, original path, original dimensions/hash, descriptive filename stem, natural alt text, modification history and variant paths/dimensions/byte counts. Keep complete provenance even when originals are excluded from Git. Source records: [Lehi manifest](../config/images-lehi-tree-pros.json) and [license records](../assets/images/lehi-tree-pros/licenses/README.md).
 
-Homepage slots are `hero`, `about`, and `service:<configured-service-slug>`; service slots are `main` and `detail`. Placements use physical filenames, regardless of public URL style. Invalid placements, unsafe paths, missing alt or missing derivatives fail before replacing output. Builds copy referenced derivatives only; originals and rights/config documents stay outside output. Legacy files outside `images/optimized` also copy, so inspect output inventory before release.
+Homepage slots are `hero`, `about`, and `service:<configured-service-slug>`; service slots are `main` and `detail`. Placements use physical filenames, regardless of public URL style. Invalid placements, unsafe paths, missing alt or missing derivatives fail before replacing output. Builds copy referenced derivatives only; originals and rights/config documents stay outside output. Only the shared CSS/JS, manifest derivatives and explicit safe `deployment.publicAssets` entries are copied; see [deployment security](deployment-security.md).
 
 Lehi uses six licensed illustrative photos, **30 WebP variants and three 1200×630 JPEG sharing images**. Four sources use the Pexels License and two use CC0; recorded terms permit commercial use and modification without visible attribution. Never imply stock photos show Lehi crews or completed Lehi jobs. Do not remove attribution required by future licenses. The shared renderer emits no captions, photographer credits, source links or disclaimers; full records stay internal.
 
@@ -72,3 +72,6 @@ python tests/browser_media.py --production --chrome '/Applications/Google Chrome
 Without an existing Chrome executable, install Playwright Chromium separately. Browser checks request only localhost, block external traffic, test 120 page/viewport/DPR cases, decode images/sharing images, check layout/sizes/navigation/contacts/canonicals and reject sample content in production. Screenshots/results go to `/tmp` and must not be committed.
 
 See [local release report](lehi-release.md) for the file list, clean-checkout results and production risks. New site rollout requires owner review. Never use the Lehi-root publishing script for another site.
+
+
+Deployment validation now enforces a shared public-file policy during generation and preflight. Read [deployment-security.md](deployment-security.md) for safe local staging, optional read-only `--live` checks, host configuration and activation requirements. This security implementation remains local; no new push or deployment is authorized.

@@ -5,6 +5,7 @@ from pathlib import Path
 
 from site_media import SiteImages, homepage_reviews
 from site_urls import SiteURLs
+from deployment_security import expected_public_files, inspect_output
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -143,16 +144,15 @@ def base_variables(config: dict, content: dict) -> dict:
     return variables
 
 
-def copy_assets(images: SiteImages) -> None:
-    for folder in ["css", "js", "images"]:
-        source = ROOT / folder
-        target = OUTPUT_DIR / folder
-        if source.exists():
-            if target.exists():
-                shutil.rmtree(target)
-            # Manifest-managed site libraries are copied selectively below.
-            shutil.copytree(source, target, ignore=lambda path, names: {"optimized"}.intersection(names) if Path(path) == ROOT / "images" else set())
-    images.copy_assets(OUTPUT_DIR)
+def copy_assets(images: SiteImages, config: dict) -> None:
+    generated = set(SiteURLs(config).pages) | {'robots.txt', 'sitemap.xml'}
+    for name in sorted(expected_public_files(config, ROOT, images) - generated):
+        source = ROOT / name
+        if any(p.is_symlink() for p in [source, *source.parents]) or not source.is_file():
+            raise ValueError('Public asset is missing or symlinked; build rejected')
+        target = OUTPUT_DIR / name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, target)
 
 
 def generate_static_pages(config: dict, content: dict, variables: dict, images: SiteImages) -> None:
@@ -312,6 +312,7 @@ def main() -> None:
 
     # Validate optional media and reviews before replacing the existing build.
     images = SiteImages(ROOT, config)
+    expected_public_files(config, ROOT, images)
     reviews = homepage_reviews(config, args.preview)
     variables = base_variables(config, content)
     variables.update({
@@ -333,12 +334,15 @@ def main() -> None:
         shutil.rmtree(OUTPUT_DIR)
     OUTPUT_DIR.mkdir()
 
-    copy_assets(images)
+    copy_assets(images, config)
     generate_static_pages(config, content, variables, images)
     generate_service_pages(config, content, variables, images)
     generate_location_pages(config, content, variables, images)
     generate_sitemap(config)
     generate_robots(config)
+    security_issues = inspect_output(config, OUTPUT_DIR, ROOT, images)
+    if security_issues:
+        raise ValueError("Public artifact security check failed: " + ", ".join(sorted({i["code"] for i in security_issues})))
 
     print("Site generated successfully.")
     print(f"Output folder: {OUTPUT_DIR}")

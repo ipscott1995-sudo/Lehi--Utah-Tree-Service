@@ -8,6 +8,7 @@ from urllib.parse import urlparse, unquote
 import xml.etree.ElementTree as ET
 
 from site_urls import SiteURLs
+from deployment_security import inspect_output, safe_detail
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -22,9 +23,12 @@ class Elements(HTMLParser):
         self.items.append((tag, dict(attrs)))
 
 
-def audit(config, output):
-    issues = []
+def audit(config, output, live=False):
+    output = Path(output)
+    issues = inspect_output(config, output, ROOT)
     counts = {'pages': 0, 'images': 0, 'socialImages': 0}
+    if issues:
+        return {'ready': False, 'counts': counts, 'issues': issues, 'limits': 'Unsafe or incomplete public artifact; remaining checks skipped.'}
     routes = SiteURLs(config)
     domain = config['business']['domain']
     expected_tel = 'tel:' + config['business']['phoneTel']
@@ -33,10 +37,14 @@ def audit(config, output):
     sample_texts = [item['text'] for item in config.get('reviews', {}).get('items', [])] if config.get('reviews', {}).get('mode') == 'sample' else []
 
     def issue(code, page, detail, severity='error'):
-        issues.append({'code': code, 'page': page, 'detail': detail, 'severity': severity})
+        issues.append({'code': code, 'page': page, 'detail': safe_detail(detail), 'severity': severity})
 
     def asset(value, page):
         parsed = urlparse(value)
+        hosting_asset = (parsed.scheme == 'https' and parsed.netloc == 'static.cloudflareinsights.com' and parsed.path.startswith('/beacon.min.js')) or (not parsed.netloc and re.fullmatch(r'/cdn-cgi/scripts/[a-z0-9]+/cloudflare-static/email-decode\.min\.js', parsed.path))
+        if live and hosting_asset:
+            issue('hosting-injected-asset', page, 'Known Cloudflare analytics/email script; excluded from artifact comparison', 'warning')
+            return
         if parsed.scheme or parsed.netloc:
             if parsed.scheme != 'https' or parsed.netloc != domain:
                 issue('asset-domain', page, value)
@@ -54,6 +62,11 @@ def audit(config, output):
         html = path.read_text(encoding='utf-8')
         counts['pages'] += 1
         parsed = Elements(html)
+        links = [a.get('href', '') for t, a in parsed.items if t == 'a']
+        if expected_tel not in links or config['business']['phoneDisplay'] not in html:
+            issue('missing-phone', name, 'Configured phone display/link is absent')
+        if expected_form not in links:
+            issue('missing-form', name, 'Configured form link is absent')
         if len([1 for t,a in parsed.items if t == 'link' and a.get('rel') == 'canonical']) != 1:
             issue('canonical-count', name, 'Expected exactly one canonical link')
         for marker in ['SAMPLE —', 'Example homeowner', 'fictional', 'layout preview', '{{', *sample_texts]:
@@ -117,7 +130,9 @@ def audit(config, output):
                     for item in value: walk(item)
             walk(schema)
         meta = {a.get('property', a.get('name')): a.get('content') for t, a in parsed.items if t == 'meta'}
-        if not meta.get('og:image') or meta.get('og:image') != meta.get('twitter:image'):
+        if not config.get('images', {}).get('useImages', False) and not meta.get('og:image') and not meta.get('twitter:image'):
+            pass
+        elif not meta.get('og:image') or meta.get('og:image') != meta.get('twitter:image'):
             issue('social-image-mismatch', name, str(meta.get('og:image')))
         else:
             asset(meta['og:image'], name)
@@ -144,16 +159,37 @@ def audit(config, output):
             'limits': 'Offline checks do not establish GHL call routing, live redirect/canonical parity, Cloudflare project settings, or authenticity of all business claims.'}
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description=__doc__)
+def main(argv=None):
+    parser = argparse.ArgumentParser(description='Production preflight; optional read-only live verification. Never publishes or deploys.')
     parser.add_argument('site_slug')
     parser.add_argument('--output-dir', type=Path, default=ROOT / 'output')
-    parser.add_argument('--json', type=Path)
-    args = parser.parse_args()
-    config = json.loads((ROOT / 'config' / f'config-{args.site_slug}.json').read_text())
-    result = audit(config, args.output_dir)
+    parser.add_argument('--json', type=Path, help='Optional sanitized report path outside public output')
+    parser.add_argument('--live', action='store_true', help='Also GET configured live hosts: private probes and public/SEO/contact checks')
+    parser.add_argument('--include-www', action='store_true', help='Include apex and www in live checks without editing site data')
+    args = parser.parse_args(argv)
+    if args.json and args.json.resolve().is_relative_to(args.output_dir.resolve()):
+        parser.error('Reports must remain outside the public output directory')
+    from deployment_security import private_paths
+    try:
+        private_paths(args.site_slug)
+        config = json.loads((ROOT / 'config' / f'config-{args.site_slug}.json').read_text())
+        result = audit(config, args.output_dir)
+        result['result'] = 'PASS' if result['ready'] else 'FAIL'
+        if args.live and result['ready']:
+            from live_validation import verify_live
+            result['live'] = verify_live(config, args.site_slug, ROOT, args.output_dir, audit, args.include_www)
+            result['ready'] = result['live']['ready']
+            result['result'] = 'PASS' if result['ready'] else 'FAIL'
+        elif args.live:
+            result['live'] = {'result': 'SKIPPED', 'reason': 'Local preflight failed; no network requests made'}
+    except (ValueError, KeyError, OSError, TypeError):
+        result = {'ready': False, 'result': 'FAIL', 'issues': [{'code': 'validation-input', 'severity': 'error', 'detail': 'Invalid/missing configuration or validation inputs; sensitive details omitted'}]}
     text = json.dumps(result, indent=2)
     if args.json:
         args.json.write_text(text + '\n')
     print(text)
-    raise SystemExit(0 if result['ready'] else 1)
+    return 0 if result['ready'] else 1
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

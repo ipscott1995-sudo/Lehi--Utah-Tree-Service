@@ -1,5 +1,8 @@
 {
   "publicUrlStyle": "extensionless",
+  "deployment": {
+    "liveHosts": ["lehitreepros.com", "www.lehitreepros.com"]
+  },
   "business": {
     "name": "Lehi Tree Pros",
     "niche": "Tree Service",
