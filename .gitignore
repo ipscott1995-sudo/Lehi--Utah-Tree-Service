@@ -1,1 +1,5 @@
 output/
+__pycache__/
+.venv/
+
+.deployment/

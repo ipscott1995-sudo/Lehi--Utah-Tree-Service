@@ -4,8 +4,8 @@
     "heroDescription": "Professional {{NICHE}} for homeowners and property owners throughout {{CITY}} and nearby communities.",
     "servicesIntro": "Whether you need routine service, emergency help, or a one-time project, we're here to help.",
     "trustIntro": "Our goal is simple: make it easy to get dependable local service without unnecessary hassle.",
-    "aboutHeadline": "A Lehi Crew That Knows Utah County Trees",
-    "aboutSnippet": "We work on properties across Lehi, Saratoga Springs, Eagle Mountain, and the rest of Utah County, from young trees planted in new subdivisions to mature trees that have outgrown their space."
+    "aboutHeadline": "Tree Care for Lehi Homes and Yards",
+    "aboutSnippet": "Tree-care needs vary across Lehi and Utah County, from young trees in new subdivisions to mature trees that have outgrown their space. Explore trimming, removal, and stump-grinding options for your property, or request an estimate to discuss your trees."
   },
 "about": {
   "metaDescription": "Learn more about {{BUSINESS_NAME}}, your trusted local provider of {{NICHE}} in {{CITY}}, {{STATE_ABBR}}.",
@@ -18,7 +18,7 @@
   "contact": {
       "headline": "Get Your Free Estimate",
     "intro": "Call us today or complete the estimate form and we'll get back to you as soon as possible.",
-    "phoneNote": "Call (385) 534-4337 to talk through your tree situation — we can usually tell you what a job involves before we even see it.",
+    "phoneNote": "Call {{PHONE_DISPLAY}} to talk through your tree situation — we can usually tell you what a job involves before we even see it.",
     "emailNote": "Prefer email? Send details and a photo or two to contact@lehitreepros.com and we'll follow up with next steps.",
     "serviceAreaText": "We serve Lehi and nearby Utah County communities including Saratoga Springs, Eagle Mountain, American Fork, Lindon, Pleasant Grove, Highland, and Alpine."
   },
@@ -27,7 +27,7 @@
       "name": "Tree Removal",
       "url": "tree-removal.html",
       "title": "Tree Removal in Lehi, UT | Lehi Tree Pros",
-      "metaDescription": "Safe tree removal for dead, damaged, or unwanted trees in Lehi, UT and Utah County. Free estimates, fast scheduling. Call (385) 534-4337.",
+      "metaDescription": "Safe tree removal for dead, damaged, or unwanted trees in Lehi, UT and Utah County. Free estimates, fast scheduling. Call {{PHONE_DISPLAY}}.",
       "heroDescription": "When a tree is dead, leaning, or too close to your house, removal is the safest option. We handle the cut, the drop, and the cleanup.",
       "headline": "Tree Removal for Lehi Homeowners",
       "paragraph1": "Not every tree is worth saving, and in Lehi's wind and winter snow load, a dead or weakened tree near a house, driveway, or fence is a real risk. We assess the lean, the root condition, and what's nearby before recommending removal — if trimming or cabling can fix the problem instead, we'll say so.",
@@ -58,7 +58,7 @@
       "name": "Tree Trimming",
       "url": "tree-trimming.html",
       "title": "Tree Trimming & Pruning in Lehi, UT | Lehi Tree Pros",
-      "metaDescription": "Professional tree trimming and pruning in Lehi, UT. Improve tree health, safety, and curb appeal. Free estimates — call (385) 534-4337.",
+      "metaDescription": "Professional tree trimming and pruning in Lehi, UT. Improve tree health, safety, and curb appeal. Free estimates — call {{PHONE_DISPLAY}}.",
       "heroDescription": "Regular trimming keeps trees healthy, away from rooflines and power lines, and looking the way you want them to.",
       "headline": "Tree Trimming in Lehi",
       "paragraph1": "Trimming does more than tidy things up — it removes weak or crossing branches before they break in a windstorm, opens up airflow so the canopy stays healthy, and keeps limbs away from your roof, siding, and gutters. We cut with the tree's natural shape in mind instead of just hacking back growth.",
@@ -89,7 +89,7 @@
       "name": "Stump Grinding",
       "url": "stump-grinding.html",
       "title": "Stump Grinding in Lehi, UT | Lehi Tree Pros",
-      "metaDescription": "Stump grinding below grade in Lehi, UT. Reclaim your yard after a tree removal. Free estimates — call (385) 534-4337.",
+      "metaDescription": "Stump grinding below grade in Lehi, UT. Reclaim your yard after a tree removal. Free estimates — call {{PHONE_DISPLAY}}.",
       "heroDescription": "A leftover stump is a tripping hazard and takes up space you could be using. We grind it below the surface so you can plant grass, build, or just stop mowing around it.",
       "headline": "Stump Grinding for Lehi Yards",
       "paragraph1": "Whether we removed the tree or someone else did, we can grind the stump down below grade so it's no longer in the way. Grinding gets through the trunk and major surface roots, leaving wood chips behind that can be removed or left for you to use as mulch.",
@@ -120,10 +120,10 @@
       "name": "Emergency Tree Service",
       "url": "emergency-tree-service.html",
       "title": "Emergency Tree Service in Lehi, UT | 24/7 | Lehi Tree Pros",
-      "metaDescription": "24/7 emergency tree removal in Lehi, UT for storm damage and fallen trees. Call (385) 534-4337 now for urgent help.",
+      "metaDescription": "24/7 emergency tree removal in Lehi, UT for storm damage and fallen trees. Call {{PHONE_DISPLAY}} now for urgent help.",
       "heroDescription": "A tree down on your house, car, or fence after a storm needs a fast response. We're available 24/7 for emergency calls.",
       "headline": "24/7 Emergency Tree Service in Lehi",
-      "paragraph1": "Utah County storms can bring down limbs and entire trees with little warning, and a tree resting on a roof or blocking a driveway isn't something that can wait until Monday. Call (385) 534-4337 and we'll talk through what you're dealing with and get someone out as soon as we can.",
+      "paragraph1": "Utah County storms can bring down limbs and entire trees with little warning, and a tree resting on a roof or blocking a driveway isn't something that can wait until Monday. Call {{PHONE_DISPLAY}} and we'll talk through what you're dealing with and get someone out as soon as we can.",
       "paragraph2": "Our first priority in an emergency is making the situation safe — securing or removing what's hazardous, clearing access to your home, and getting weight off a structure if a tree has fallen on it. From there we'll talk about full removal, cleanup, and whether you'll need anything for an insurance claim.",
       "bullets": [
         "Available 24/7 for storm damage and fallen trees",
@@ -135,7 +135,7 @@
       "faqs": [
         {
           "question": "How fast can you get to an emergency?",
-          "answer": "Response time depends on the time of day and how many calls are ahead of you, but emergency calls are prioritized over routine scheduling. Call (385) 534-4337 and we'll give you a realistic estimate when you call."
+          "answer": "Response time depends on the time of day and how many calls are ahead of you, but emergency calls are prioritized over routine scheduling. Call {{PHONE_DISPLAY}} and we'll give you a realistic estimate when you call."
         },
         {
           "question": "Will you work with my insurance company?",
@@ -159,7 +159,7 @@
     },
     {
       "question": "Do you offer free estimates?",
-      "answer": "Yes, estimates are free. Call (385) 534-4337 or fill out our quote form and we'll set up a time to take a look."
+      "answer": "Yes, estimates are free. Call {{PHONE_DISPLAY}} or fill out our quote form and we'll set up a time to take a look."
     },
     {
       "question": "What are your hours?",
@@ -175,7 +175,7 @@
     },
     {
       "question": "How do I get a quote?",
-      "answer": "Call (385) 534-4337, email contact@lehitreepros.com, or fill out our online quote form and we'll follow up with next steps."
+      "answer": "Call {{PHONE_DISPLAY}}, email contact@lehitreepros.com, or fill out our online quote form and we'll follow up with next steps."
     }
   ]
 },
@@ -185,7 +185,7 @@
       "city": "Saratoga Springs",
       "url": "tree-service-saratoga-springs.html",
       "title": "Tree Service in Saratoga Springs, UT | Lehi Tree Pros",
-      "metaDescription": "Tree removal, trimming, and stump grinding for Saratoga Springs, UT homeowners. Free estimates — call (385) 534-4337.",
+      "metaDescription": "Tree removal, trimming, and stump grinding for Saratoga Springs, UT homeowners. Free estimates — call {{PHONE_DISPLAY}}.",
       "heroDescription": "Lehi Tree Pros serves homeowners throughout Saratoga Springs with tree removal, trimming, and stump grinding.",
       "paragraph1": "Saratoga Springs has grown fast, and a lot of yards still have young trees that need early shaping, plus older lots near the lake with mature trees that need regular maintenance. We work on both, from new subdivisions to established neighborhoods closer to the water.",
       "paragraph2": "Whether you need a single tree trimmed back from a fence line or a full removal after storm damage, we're a short drive from Saratoga Springs and can usually get an estimate scheduled within a few days.",
@@ -204,7 +204,7 @@
       "city": "Eagle Mountain",
       "url": "tree-service-eagle-mountain.html",
       "title": "Tree Service in Eagle Mountain, UT | Lehi Tree Pros",
-      "metaDescription": "Tree removal, trimming, and stump grinding for Eagle Mountain, UT homeowners. Free estimates — call (385) 534-4337.",
+      "metaDescription": "Tree removal, trimming, and stump grinding for Eagle Mountain, UT homeowners. Free estimates — call {{PHONE_DISPLAY}}.",
       "heroDescription": "Lehi Tree Pros provides tree removal, trimming, and stump grinding throughout Eagle Mountain.",
       "paragraph1": "Eagle Mountain properties often have more open space and windier conditions than lots closer to the valley floor, which can mean more stress on young trees and faster wear on older ones. We take that into account when we recommend trimming versus removal.",
       "paragraph2": "From newly planted trees in growing neighborhoods to mature trees on larger lots, we handle jobs of any size across Eagle Mountain, with free estimates and straightforward scheduling.",
@@ -223,7 +223,7 @@
       "city": "American Fork",
       "url": "tree-service-american-fork.html",
       "title": "Tree Service in American Fork, UT | Lehi Tree Pros",
-      "metaDescription": "Tree removal, trimming, and stump grinding for American Fork, UT homeowners. Free estimates — call (385) 534-4337.",
+      "metaDescription": "Tree removal, trimming, and stump grinding for American Fork, UT homeowners. Free estimates — call {{PHONE_DISPLAY}}.",
       "heroDescription": "Lehi Tree Pros serves American Fork homeowners with tree removal, trimming, and stump grinding.",
       "paragraph1": "American Fork's older, tree-lined neighborhoods often have mature trees that need regular trimming to stay healthy and clear of rooflines, while newer parts of the city have young trees that benefit from early structural pruning.",
       "paragraph2": "We're close by in Lehi, so American Fork is part of our everyday service area — whether it's routine trimming, a stump from a tree removed years ago, or an emergency after a storm.",
@@ -242,7 +242,7 @@
       "city": "Lindon",
       "url": "tree-service-lindon.html",
       "title": "Tree Service in Lindon, UT | Lehi Tree Pros",
-      "metaDescription": "Tree removal, trimming, and stump grinding for Lindon, UT homeowners. Free estimates — call (385) 534-4337.",
+      "metaDescription": "Tree removal, trimming, and stump grinding for Lindon, UT homeowners. Free estimates — call {{PHONE_DISPLAY}}.",
       "heroDescription": "Lehi Tree Pros provides tree removal, trimming, and stump grinding to homeowners throughout Lindon.",
       "paragraph1": "Lindon's mix of established neighborhoods and properties near the foothills means we see everything from overgrown shade trees to younger trees that need shaping before they grow into a problem spot.",
       "paragraph2": "We provide the same free estimates and response times in Lindon that we do in Lehi, so you're not waiting longer just because you're a few minutes further out.",

@@ -1,0 +1,2 @@
+# Optional source-asset optimization; the site generator remains standard-library-only.
+Pillow==11.3.0

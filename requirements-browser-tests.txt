@@ -1,0 +1,2 @@
+# Optional local browser checks. An existing Chrome can be used with --chrome.
+playwright==1.60.0

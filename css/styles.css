@@ -1035,3 +1035,28 @@ p:last-child { margin-bottom: 0; }
   white-space: nowrap;
   line-height: 1.2;
 }
+/* Manifest images: additive styles preserve the existing conversion layout. */
+.site-image { margin: 24px 0; min-width: 0; }
+.page-layout > article, .page-layout > aside { min-width: 0; }
+.site-image img { width: 100%; height: auto; border-radius: var(--radius-lg); }
+.site-image figcaption { margin-top: 8px; font-size: .75rem; line-height: 1.5; color: var(--gray-700); overflow-wrap: anywhere; }
+.site-image figcaption a { text-decoration: underline; }
+.site-image--hero { width: 100%; max-width: 900px; margin: 32px auto 0; text-align: left; }
+.site-image--hero img { aspect-ratio: 16 / 9; object-fit: cover; }
+.hero .site-image--hero figcaption, .hero .site-image--hero figcaption a { color: rgba(255,255,255,.9); }
+.card .site-image--card { margin: 0 0 20px; }
+.site-image--card img { aspect-ratio: 4 / 3; object-fit: cover; object-position: center 40%; }
+.col-img .site-image--about { margin: 0; }
+.col-img .site-image--about figcaption { padding: 0 14px 14px; }
+.site-image--detail { max-width: 500px; margin: 24px auto; }
+.site-image--portrait { max-width: 360px; margin: 24px auto; }
+.site-image--main img, .site-image--detail img { max-height: 520px; object-fit: contain; background: var(--off-white); }
+.homepage-reviews { background: var(--off-white); }
+.reviews-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.review-card { padding: 28px; background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); overflow-wrap: anywhere; }
+.review-label { display: block; margin-bottom: 16px; font-size: .75rem; font-weight: 800; color: var(--green-dark); }
+.review-card blockquote p { font-style: italic; }
+.review-author { margin-top: 20px; font-size: .88rem; font-weight: 700; }
+.review-source { font-size: .85rem; text-decoration: underline; }
+.reviews-notice { font-weight: 600; }
+@media (max-width: 900px) { .reviews-grid { grid-template-columns: 1fr; } }

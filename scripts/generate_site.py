@@ -1,12 +1,13 @@
+import argparse
 import json
 import shutil
-import sys
 from pathlib import Path
+
+from site_media import SiteImages, homepage_reviews
+from site_urls import SiteURLs
 
 
 ROOT = Path(__file__).resolve().parents[1]
-CONFIG_PATH = ROOT / "config" / "config.json"
-CONTENT_PATH = ROOT / "config" / "content.json"
 TEMPLATES_DIR = ROOT / "templates"
 OUTPUT_DIR = ROOT / "output"
 
@@ -56,6 +57,12 @@ def render(template: str, variables: dict) -> str:
         if output == previous:
             break
 
+    if variables.get("__preview__"):
+        output = output.replace("</head>", '<meta name="robots" content="noindex, nofollow">\n</head>')
+    if variables.get("__social_meta__"):
+        output = output.replace("</head>", variables["__social_meta__"] + "</head>")
+    if variables.get("__urls__"):
+        output = variables["__urls__"].rewrite(output)
     return output
 
 
@@ -71,6 +78,7 @@ def base_variables(config: dict, content: dict) -> dict:
     footer = content.get("footer", {})
 
     variables = {
+        "__urls__": SiteURLs(config),
         "{{BUSINESS_NAME}}": business["name"],
         "{{NICHE}}": business["niche"],
         "{{PRIMARY_SERVICE}}": business["primaryService"],
@@ -135,17 +143,19 @@ def base_variables(config: dict, content: dict) -> dict:
     return variables
 
 
-def copy_assets() -> None:
+def copy_assets(images: SiteImages) -> None:
     for folder in ["css", "js", "images"]:
         source = ROOT / folder
         target = OUTPUT_DIR / folder
         if source.exists():
             if target.exists():
                 shutil.rmtree(target)
-            shutil.copytree(source, target)
+            # Manifest-managed site libraries are copied selectively below.
+            shutil.copytree(source, target, ignore=lambda path, names: {"optimized"}.intersection(names) if Path(path) == ROOT / "images" else set())
+    images.copy_assets(OUTPUT_DIR)
 
 
-def generate_static_pages(config: dict, content: dict, variables: dict) -> None:
+def generate_static_pages(config: dict, content: dict, variables: dict, images: SiteImages) -> None:
     pages = {
         "home.html": "index.html",
         "about.html": "about.html",
@@ -160,6 +170,7 @@ def generate_static_pages(config: dict, content: dict, variables: dict) -> None:
 
         template = path.read_text(encoding="utf-8")
         page_vars = variables.copy()
+        page_vars["__social_meta__"] = images.social_meta(config, output_name)
 
         if template_name == "faq.html":
             faq_content = content.get("faq", {})
@@ -184,7 +195,7 @@ def service_content(content: dict, service_name: str) -> dict:
     return {}
 
 
-def generate_service_pages(config: dict, content: dict, variables: dict) -> None:
+def generate_service_pages(config: dict, content: dict, variables: dict, images: SiteImages) -> None:
     template_path = TEMPLATES_DIR / "service.html"
     if not template_path.exists():
         return
@@ -196,6 +207,9 @@ def generate_service_pages(config: dict, content: dict, variables: dict) -> None
         page_content = service_content(content, service["name"])
 
         copy.update({
+            "{{SERVICE_MAIN_IMAGE_HTML}}": images.figure(service["url"], "main"),
+            "__social_meta__": images.social_meta(config, service["url"]),
+            "{{SERVICE_DETAIL_IMAGE_HTML}}": images.figure(service["url"], "detail"),
             "{{CURRENT_SERVICE_NAME}}": service["name"],
             "{{CURRENT_SERVICE_URL}}": service["url"],
             "{{CURRENT_SERVICE_DESCRIPTION}}": service["description"],
@@ -220,7 +234,7 @@ def location_content(content: dict, city: str) -> dict:
     return {}
 
 
-def generate_location_pages(config: dict, content: dict, variables: dict) -> None:
+def generate_location_pages(config: dict, content: dict, variables: dict, images: SiteImages) -> None:
     template_path = TEMPLATES_DIR / "location.html"
     if not template_path.exists():
         return
@@ -229,6 +243,7 @@ def generate_location_pages(config: dict, content: dict, variables: dict) -> Non
 
     for location_page in config["locationPages"]:
         copy = variables.copy()
+        copy["__social_meta__"] = images.social_meta(config, location_page["url"])
         page_content = location_content(content, location_page["city"])
 
         copy.update({
@@ -247,19 +262,18 @@ def generate_location_pages(config: dict, content: dict, variables: dict) -> Non
 
 
 def generate_sitemap(config: dict) -> None:
-    domain = config["business"]["domain"]
-    urls = ["", "about.html", "contact.html", "faq.html"]
+    urls = ["index.html", "about.html", "contact.html", "faq.html"]
 
     urls += [service["url"] for service in config["services"]]
     urls += [page["url"] for page in config["locationPages"]]
 
     xml_urls = []
     for url in urls:
-        loc = f"https://{domain}/{url}" if url else f"https://{domain}/"
+        loc = SiteURLs(config).absolute(url)
         xml_urls.append(f"  <url>\n    <loc>{loc}</loc>\n  </url>")
 
     sitemap = f"""<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {chr(10).join(xml_urls)}
 </urlset>
 """
@@ -277,25 +291,58 @@ Sitemap: https://{domain}/sitemap.xml
 
 
 def main() -> None:
-    config_path = Path(sys.argv[1]) if len(sys.argv) > 1 else CONFIG_PATH
+    parser = argparse.ArgumentParser(description="Generate a local static site; never publishes or deploys.")
+    parser.add_argument("site_slug", nargs="?")
+    parser.add_argument("--preview", action="store_true", help="Show clearly labeled sample reviews and mark all pages noindex")
+    args = parser.parse_args()
+    if not args.site_slug:
+        parser.error("An explicit site slug is required (for example: lehi-tree-pros). Legacy default inputs are not used.")
+    site_slug = args.site_slug
+    config_path = ROOT / "config" / f"config-{site_slug}.json"
+    content_path = ROOT / "config" / f"content-{site_slug}.json"
+
+    if not config_path.exists():
+        raise FileNotFoundError(f"Config file not found: {config_path}")
+
+    if not content_path.exists():
+        raise FileNotFoundError(f"Content file not found: {content_path}")
+
     config = load_json(config_path)
-    content = load_json(CONTENT_PATH)
+    content = load_json(content_path)
+
+    # Validate optional media and reviews before replacing the existing build.
+    images = SiteImages(ROOT, config)
+    reviews = homepage_reviews(config, args.preview)
+    variables = base_variables(config, content)
+    variables.update({
+        "__preview__": args.preview,
+        "{{HOME_HERO_IMAGE_HTML}}": images.figure("index.html", "hero"),
+        "{{HOME_ABOUT_IMAGE_HTML}}": images.figure("index.html", "about"),
+        "{{HOME_REVIEWS_HTML}}": reviews,
+    })
+    for index, service in enumerate(config["services"], 1):
+        variables[f"{{{{SERVICE_{index}_IMAGE_HTML}}}}"] = images.figure("index.html", f"service:{service['slug']}")
+    if not variables["{{HOME_ABOUT_IMAGE_HTML}}"]:
+        variables["{{HOME_ABOUT_IMAGE_HTML}}"] = '''<div class="col-img-placeholder" role="img" aria-label="Service illustration">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2C8 2 5 5.5 5 9c0 2.5 1.3 4.7 3.3 6H8v2h8v-2h-.3C17.7 13.7 19 11.5 19 9c0-3.5-3-7-7-7z"/>
+              </svg>
+            </div>'''
 
     if OUTPUT_DIR.exists():
         shutil.rmtree(OUTPUT_DIR)
     OUTPUT_DIR.mkdir()
 
-    variables = base_variables(config, content)
-
-    copy_assets()
-    generate_static_pages(config, content, variables)
-    generate_service_pages(config, content, variables)
-    generate_location_pages(config, content, variables)
+    copy_assets(images)
+    generate_static_pages(config, content, variables, images)
+    generate_service_pages(config, content, variables, images)
+    generate_location_pages(config, content, variables, images)
     generate_sitemap(config)
     generate_robots(config)
 
     print("Site generated successfully.")
     print(f"Output folder: {OUTPUT_DIR}")
+    print("Preview build (noindex; sample reviews permitted)." if args.preview else "Standard build (sample reviews omitted; not published).")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,470 @@
+{
+  "version": 1,
+  "assetDirectory": "images/optimized/lehi-tree-pros",
+  "widths": [
+    400,
+    600,
+    800,
+    1200,
+    1600
+  ],
+  "images": {
+    "removal": {
+      "original": "assets/images/lehi-tree-pros/originals/tree-removal-chainsaw.jpg",
+      "filename": "tree-removal-chainsaw",
+      "alt": "Worker wearing protective headgear cutting a tree trunk with a chainsaw",
+      "caption": "Illustrative photo; not a Lehi Tree Pros project or crew.",
+      "source": {
+        "license": "Pexels License",
+        "licenseUrl": "https://www.pexels.com/license/",
+        "licenseDetails": "Free commercial website use and modification allowed; attribution optional. Do not imply endorsement, resell unaltered images, redistribute on stock platforms, or use as a trademark.",
+        "verifiedOn": "2026-10-08",
+        "url": "https://www.pexels.com/photo/man-cutting-the-tree-using-a-chainsaw-11932165/",
+        "creator": "Fabian Köhler",
+        "downloadUrl": "https://images.pexels.com/photos/11932165/pexels-photo-11932165.jpeg"
+      },
+      "originalDimensions": {
+        "width": 5184,
+        "height": 2920
+      },
+      "originalSha256": "f814d008f945dd2bb7c04daafa590c86891d6753b0bdb18582bcb98ccca74a3a",
+      "variants": [
+        {
+          "path": "images/optimized/lehi-tree-pros/tree-removal-chainsaw-400.webp",
+          "width": 400,
+          "height": 225,
+          "bytes": 22272
+        },
+        {
+          "path": "images/optimized/lehi-tree-pros/tree-removal-chainsaw-600.webp",
+          "width": 600,
+          "height": 338,
+          "bytes": 49042
+        },
+        {
+          "path": "images/optimized/lehi-tree-pros/tree-removal-chainsaw-800.webp",
+          "width": 800,
+          "height": 451,
+          "bytes": 84216
+        },
+        {
+          "path": "images/optimized/lehi-tree-pros/tree-removal-chainsaw-1200.webp",
+          "width": 1200,
+          "height": 676,
+          "bytes": 178626
+        },
+        {
+          "path": "images/optimized/lehi-tree-pros/tree-removal-chainsaw-1600.webp",
+          "width": 1600,
+          "height": 901,
+          "bytes": 300402
+        }
+      ],
+      "modifications": "Resized and compressed as WebP; metadata removed.",
+      "renditions": {
+        "social": {
+          "widths": [
+            1200
+          ],
+          "aspectRatio": [
+            40,
+            21
+          ],
+          "cropCenter": [
+            0.5,
+            0.5
+          ],
+          "format": "jpeg",
+          "quality": 85,
+          "variants": [
+            {
+              "path": "images/optimized/lehi-tree-pros/tree-removal-chainsaw-social-1200.jpg",
+              "width": 1200,
+              "height": 630,
+              "bytes": 252067
+            }
+          ],
+          "modifications": "Cropped to configured aspect ratio; resized, compressed and metadata removed."
+        }
+      }
+    },
+    "trimming": {
+      "original": "assets/images/lehi-tree-pros/originals/tree-trimming-pole-saw.jpg",
+      "filename": "tree-trimming-pole-saw",
+      "alt": "Worker in an orange helmet using a pole saw beside a tree",
+      "caption": "Illustrative photo; not a Lehi Tree Pros project or crew.",
+      "source": {
+        "license": "Pexels License",
+        "licenseUrl": "https://www.pexels.com/license/",
+        "licenseDetails": "Free commercial website use and modification allowed; attribution optional. Do not imply endorsement, resell unaltered images, redistribute on stock platforms, or use as a trademark.",
+        "verifiedOn": "2026-10-08",
+        "url": "https://www.pexels.com/photo/man-in-helmet-cut-tree-with-equipment-5644617/",
+        "creator": "Samuel Vogl",
+        "downloadUrl": "https://images.pexels.com/photos/5644617/pexels-photo-5644617.jpeg"
+      },
+      "originalDimensions": {
+        "width": 3024,
+        "height": 4032
+      },
+      "originalSha256": "8111aac7abf5cb2c0096f6b051d01b038d84701b20bef22a4693c6ef91a34355",
+      "variants": [
+        {
+          "path": "images/optimized/lehi-tree-pros/tree-trimming-pole-saw-400.webp",
+          "width": 400,
+          "height": 533,
+          "bytes": 55946
+        },
+        {
+          "path": "images/optimized/lehi-tree-pros/tree-trimming-pole-saw-600.webp",
+          "width": 600,
+          "height": 800,
+          "bytes": 116800
+        },
+        {
+          "path": "images/optimized/lehi-tree-pros/tree-trimming-pole-saw-800.webp",
+          "width": 800,
+          "height": 1067,
+          "bytes": 195018
+        }
+      ],
+      "modifications": "Resized and compressed as WebP; metadata removed.",
+      "widths": [
+        400,
+        600,
+        800
+      ],
+      "renditions": {
+        "card": {
+          "widths": [
+            320,
+            400,
+            600,
+            800
+          ],
+          "aspectRatio": [
+            4,
+            3
+          ],
+          "cropCenter": [
+            0.5,
+            0.4
+          ],
+          "variants": [
+            {
+              "path": "images/optimized/lehi-tree-pros/tree-trimming-pole-saw-card-320.webp",
+              "width": 320,
+              "height": 240,
+              "bytes": 19742
+            },
+            {
+              "path": "images/optimized/lehi-tree-pros/tree-trimming-pole-saw-card-400.webp",
+              "width": 400,
+              "height": 300,
+              "bytes": 29430
+            },
+            {
+              "path": "images/optimized/lehi-tree-pros/tree-trimming-pole-saw-card-600.webp",
+              "width": 600,
+              "height": 450,
+              "bytes": 60722
+            },
+            {
+              "path": "images/optimized/lehi-tree-pros/tree-trimming-pole-saw-card-800.webp",
+              "width": 800,
+              "height": 600,
+              "bytes": 98640
+            }
+          ],
+          "modifications": "Cropped to configured aspect ratio; resized, compressed and metadata removed."
+        }
+      }
+    },
+    "pruning": {
+      "original": "assets/images/lehi-tree-pros/originals/tree-pruning-orchard.jpg",
+      "filename": "tree-pruning-orchard",
+      "alt": "Two people pruning small trees along an orchard row",
+      "caption": "Illustrative photo; not a Lehi Tree Pros project or crew.",
+      "source": {
+        "license": "Pexels License",
+        "licenseUrl": "https://www.pexels.com/license/",
+        "licenseDetails": "Free commercial website use and modification allowed; attribution optional. Do not imply endorsement, resell unaltered images, redistribute on stock platforms, or use as a trademark.",
+        "verifiedOn": "2026-10-08",
+        "url": "https://www.pexels.com/photo/colleagues-cutting-branches-with-garden-equipment-in-orchard-5231049/",
+        "creator": "Anna Shvets",
+        "downloadUrl": "https://images.pexels.com/photos/5231049/pexels-photo-5231049.jpeg"
+      },
+      "originalDimensions": {
+        "width": 4144,
+        "height": 6216
+      },
+      "originalSha256": "6ddce5a3d50697a210106ee093abf3651b0b78a483db17e18fdada2471428411",
+      "variants": [
+        {
+          "path": "images/optimized/lehi-tree-pros/tree-pruning-orchard-400.webp",
+          "width": 400,
+          "height": 600,
+          "bytes": 47798
+        },
+        {
+          "path": "images/optimized/lehi-tree-pros/tree-pruning-orchard-600.webp",
+          "width": 600,
+          "height": 900,
+          "bytes": 103990
+        },
+        {
+          "path": "images/optimized/lehi-tree-pros/tree-pruning-orchard-800.webp",
+          "width": 800,
+          "height": 1200,
+          "bytes": 178402
+        }
+      ],
+      "modifications": "Resized and compressed as WebP; metadata removed.",
+      "widths": [
+        400,
+        600,
+        800
+      ]
+    },
+    "stump": {
+      "original": "assets/images/lehi-tree-pros/originals/stump-grinder.jpg",
+      "filename": "stump-grinding-equipment",
+      "alt": "Yellow stump grinder working inside a fenced-off area beside a path",
+      "caption": "Illustrative photo; not a Lehi Tree Pros project or crew.",
+      "source": {
+        "license": "CC0 1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "licenseDetails": "Public domain dedication; commercial use, modification and redistribution permitted. Attribution not required.",
+        "verifiedOn": "2026-10-08",
+        "url": "https://commons.wikimedia.org/wiki/File:Stump_grinder.jpg",
+        "creator": "Wikideas1",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Stump_grinder.jpg"
+      },
+      "originalDimensions": {
+        "width": 3318,
+        "height": 2100
+      },
+      "originalSha256": "33a6edbeba62054e9b27df927280e7c024e3384b15b620b5ad4bfccc9a44981a",
+      "variants": [
+        {
+          "path": "images/optimized/lehi-tree-pros/stump-grinding-equipment-400.webp",
+          "width": 400,
+          "height": 253,
+          "bytes": 21200
+        },
+        {
+          "path": "images/optimized/lehi-tree-pros/stump-grinding-equipment-600.webp",
+          "width": 600,
+          "height": 380,
+          "bytes": 49052
+        },
+        {
+          "path": "images/optimized/lehi-tree-pros/stump-grinding-equipment-800.webp",
+          "width": 800,
+          "height": 506,
+          "bytes": 88826
+        },
+        {
+          "path": "images/optimized/lehi-tree-pros/stump-grinding-equipment-1200.webp",
+          "width": 1200,
+          "height": 759,
+          "bytes": 208924
+        },
+        {
+          "path": "images/optimized/lehi-tree-pros/stump-grinding-equipment-1600.webp",
+          "width": 1600,
+          "height": 1013,
+          "bytes": 380778
+        }
+      ],
+      "modifications": "Resized and compressed as WebP; metadata removed.",
+      "renditions": {
+        "social": {
+          "widths": [
+            1200
+          ],
+          "aspectRatio": [
+            40,
+            21
+          ],
+          "cropCenter": [
+            0.5,
+            0.5
+          ],
+          "format": "jpeg",
+          "quality": 85,
+          "variants": [
+            {
+              "path": "images/optimized/lehi-tree-pros/stump-grinding-equipment-social-1200.jpg",
+              "width": 1200,
+              "height": 630,
+              "bytes": 261051
+            }
+          ],
+          "modifications": "Cropped to configured aspect ratio; resized, compressed and metadata removed."
+        }
+      }
+    },
+    "emergency": {
+      "original": "assets/images/lehi-tree-pros/originals/storm-fallen-tree.jpg",
+      "filename": "emergency-tree-service-storm-damage",
+      "alt": "Storm-fallen evergreen tree beside a backyard swimming pool",
+      "caption": "Illustrative photo; not a Lehi Tree Pros project or crew.",
+      "source": {
+        "license": "CC0 1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "licenseDetails": "Public domain dedication; commercial use, modification and redistribution permitted. Attribution not required.",
+        "verifiedOn": "2026-10-08",
+        "url": "https://commons.wikimedia.org/wiki/File:Tree_fallen_after_a_storm.jpg",
+        "creator": "Drummyfish",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Tree_fallen_after_a_storm.jpg"
+      },
+      "originalDimensions": {
+        "width": 2048,
+        "height": 1536
+      },
+      "originalSha256": "3d4ab80ebcabdadbbb238db92c52376fcd75fc6e7b6264cdb558e555e0dc2ce0",
+      "variants": [
+        {
+          "path": "images/optimized/lehi-tree-pros/emergency-tree-service-storm-damage-400.webp",
+          "width": 400,
+          "height": 300,
+          "bytes": 28232
+        },
+        {
+          "path": "images/optimized/lehi-tree-pros/emergency-tree-service-storm-damage-600.webp",
+          "width": 600,
+          "height": 450,
+          "bytes": 58774
+        },
+        {
+          "path": "images/optimized/lehi-tree-pros/emergency-tree-service-storm-damage-800.webp",
+          "width": 800,
+          "height": 600,
+          "bytes": 98292
+        },
+        {
+          "path": "images/optimized/lehi-tree-pros/emergency-tree-service-storm-damage-1200.webp",
+          "width": 1200,
+          "height": 900,
+          "bytes": 187688
+        },
+        {
+          "path": "images/optimized/lehi-tree-pros/emergency-tree-service-storm-damage-1600.webp",
+          "width": 1600,
+          "height": 1200,
+          "bytes": 280528
+        }
+      ],
+      "modifications": "Resized and compressed as WebP; metadata removed.",
+      "renditions": {
+        "social": {
+          "widths": [
+            1200
+          ],
+          "aspectRatio": [
+            40,
+            21
+          ],
+          "cropCenter": [
+            0.5,
+            0.5
+          ],
+          "format": "jpeg",
+          "quality": 85,
+          "variants": [
+            {
+              "path": "images/optimized/lehi-tree-pros/emergency-tree-service-storm-damage-social-1200.jpg",
+              "width": 1200,
+              "height": 630,
+              "bytes": 229729
+            }
+          ],
+          "modifications": "Cropped to configured aspect ratio; resized, compressed and metadata removed."
+        }
+      }
+    },
+    "care": {
+      "original": "assets/images/lehi-tree-pros/originals/tree-care-leaves.jpg",
+      "filename": "general-tree-care-orchard",
+      "alt": "Person examining leaves and branches on a small orchard tree",
+      "caption": "Illustrative photo; not a Lehi Tree Pros project or crew.",
+      "source": {
+        "license": "Pexels License",
+        "licenseUrl": "https://www.pexels.com/license/",
+        "licenseDetails": "Free commercial website use and modification allowed; attribution optional. Do not imply endorsement, resell unaltered images, redistribute on stock platforms, or use as a trademark.",
+        "verifiedOn": "2026-10-08",
+        "url": "https://www.pexels.com/photo/a-woman-touching-leaves-5027795/",
+        "creator": "Anna Shvets",
+        "downloadUrl": "https://images.pexels.com/photos/5027795/pexels-photo-5027795.jpeg"
+      },
+      "originalDimensions": {
+        "width": 6136,
+        "height": 4091
+      },
+      "originalSha256": "97d1da145310c22e4f66d6956b220843b4fad8f511564c250109c6076a1d26a6",
+      "variants": [
+        {
+          "path": "images/optimized/lehi-tree-pros/general-tree-care-orchard-400.webp",
+          "width": 400,
+          "height": 267,
+          "bytes": 18982
+        },
+        {
+          "path": "images/optimized/lehi-tree-pros/general-tree-care-orchard-600.webp",
+          "width": 600,
+          "height": 400,
+          "bytes": 36040
+        },
+        {
+          "path": "images/optimized/lehi-tree-pros/general-tree-care-orchard-800.webp",
+          "width": 800,
+          "height": 533,
+          "bytes": 56990
+        },
+        {
+          "path": "images/optimized/lehi-tree-pros/general-tree-care-orchard-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "bytes": 107778
+        },
+        {
+          "path": "images/optimized/lehi-tree-pros/general-tree-care-orchard-1600.webp",
+          "width": 1600,
+          "height": 1067,
+          "bytes": 181368
+        }
+      ],
+      "modifications": "Resized and compressed as WebP; metadata removed."
+    }
+  },
+  "placements": {
+    "index.html": {
+      "hero": "removal",
+      "about": "care",
+      "service:tree-removal": "removal",
+      "service:tree-trimming": "trimming",
+      "service:stump-grinding": "stump",
+      "service:emergency-tree-service": "emergency"
+    },
+    "tree-removal.html": {
+      "main": "removal"
+    },
+    "tree-trimming.html": {
+      "main": "trimming",
+      "detail": "pruning"
+    },
+    "stump-grinding.html": {
+      "main": "stump"
+    },
+    "emergency-tree-service.html": {
+      "main": "emergency"
+    }
+  },
+  "social": {
+    "default": "removal",
+    "pages": {
+      "stump-grinding.html": "stump",
+      "emergency-tree-service.html": "emergency"
+    }
+  }
+}
