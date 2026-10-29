@@ -50,7 +50,7 @@ class SecurityTests(unittest.TestCase):
 
     def test_exact_inventory_and_missing_files(self):
         self.assertEqual(inspect_output(self.config, self.output, ROOT), [])
-        self.assertEqual(len(expected_public_files(self.config, ROOT)), 49)
+        self.assertEqual(len(expected_public_files(self.config, ROOT)), 49 + len(self.config['deployment'].get('publicAssets', [])))
         (self.output / 'js/main.js').unlink()
         self.assertIn('missing-public-file', {i['code'] for i in inspect_output(self.config, self.output, ROOT)})
 
@@ -88,7 +88,7 @@ class SecurityTests(unittest.TestCase):
 
     def test_additional_assets_require_explicit_safe_configuration(self):
         config = copy.deepcopy(self.config)
-        config['deployment']['publicAssets'] = ['images/favicon.ico']
+        config['deployment'].setdefault('publicAssets', []).append('images/favicon.ico')
         (self.output / 'images/favicon.ico').write_bytes(b'fixture-icon')
         self.assertEqual(inspect_output(config, self.output, ROOT), [])
         for name in ['config/example.js', 'Config/example.js', '../outside.css', '/absolute.css', 'images/.secret.css', 'images/secret.json', 'AGENTS.md', 'scripts/x.html', 'images/%2e%2e/config.css']:
@@ -118,6 +118,9 @@ class SecurityTests(unittest.TestCase):
             (source / 'css/styles.css').write_text('body{}')
             (source / 'js/main.js').write_text('void 0;')
             (source / 'js/private-config.json').write_text('{"internal": true}')
+            for name in config['deployment'].get('publicAssets', []):
+                target = source / name; target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes((ROOT / name).read_bytes())
             with patch.object(generate_site, 'ROOT', source), patch.object(generate_site, 'OUTPUT_DIR', source / 'output'):
                 generate_site.copy_assets(SiteImages(source, config), config)
             self.assertFalse((source / 'output/js/private-config.json').exists())
@@ -189,7 +192,7 @@ class SecurityTests(unittest.TestCase):
             return self.fake_fetch(url, max_bytes)
         result = verify_live(self.config, 'lehi-tree-pros', ROOT, self.output, validate_production.audit, fetch=fetch)
         self.assertTrue(result['ready'], result['issues'])
-        self.assertEqual(len(result['publicChecks']), 98)
+        self.assertEqual(len(result['publicChecks']), 2 * len(expected_public_files(self.config, ROOT)))
         self.assertTrue(any(p['reason'] == 'blocked' for p in result['privateChecks']))
         self.assertTrue(any(p['reason'] == 'safe-homepage-fallback' for p in result['privateChecks']))
         self.assertTrue(any(p['cacheBusting'] for p in result['privateChecks']))
@@ -267,7 +270,7 @@ class SecurityTests(unittest.TestCase):
         self.assertEqual(report['result'], 'PASS')
         self.assertEqual(report['live']['result'], 'PASS')
         self.assertEqual(len(report['live']['privateChecks']), 56)
-        self.assertEqual(len(report['live']['publicChecks']), 98)
+        self.assertEqual(len(report['live']['publicChecks']), 2 * len(expected_public_files(self.config, ROOT)))
         self.assertNotIn('body', stream.getvalue())
 
     def test_unreachable_host_fails_without_repeating_every_request(self):

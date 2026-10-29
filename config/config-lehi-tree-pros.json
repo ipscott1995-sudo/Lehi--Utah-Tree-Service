@@ -1,7 +1,15 @@
 {
   "publicUrlStyle": "extensionless",
   "deployment": {
-    "liveHosts": ["lehitreepros.com", "www.lehitreepros.com"]
+    "liveHosts": [
+      "lehitreepros.com",
+      "www.lehitreepros.com"
+    ],
+    "publicAssets": [
+      "favicon.ico",
+      "favicon-32.png",
+      "apple-touch-icon.png"
+    ]
   },
   "business": {
     "name": "Lehi Tree Pros",

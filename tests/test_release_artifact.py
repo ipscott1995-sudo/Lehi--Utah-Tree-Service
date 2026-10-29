@@ -22,8 +22,9 @@ class ReleaseArtifactTests(unittest.TestCase):
                                'css/styles.css', 'js/main.js', 'robots.txt', 'sitemap.xml'}
         expected |= {s['url'] for s in config['services']}
         expected |= {p['url'] for p in config['locationPages']}
+        expected |= set(config.get('deployment', {}).get('publicAssets', []))
         actual = {p.relative_to(ROOT / 'output').as_posix()
                   for p in (ROOT / 'output').rglob('*') if p.is_file()}
         self.assertEqual(actual, expected)
-        self.assertEqual(len(actual), 49)
+        self.assertEqual(len(actual), 49 + len(config.get('deployment', {}).get('publicAssets', [])))
         self.assertTrue((ROOT / 'assets/images/lehi-tree-pros/licenses/README.md').is_file())
